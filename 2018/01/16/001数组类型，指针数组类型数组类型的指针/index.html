@@ -79,22 +79,19 @@
 
 
 
-<meta name="description" content="C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？ 1.数组类型12345678910111213141516171819202122232425#include &amp;lt;stdio.h&amp;gt;// 数组类型int main()&amp;#123;	// int a[10];  // 这是我们常用的定义数组的方式	// 定义一个数组类型 int[10">
 <meta name="keywords" content="C&#x2F;C++难点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组类型，指针数组类型数组类型的指针">
 <meta property="og:url" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/index.html">
 <meta property="og:site_name" content="项斌的BLOG">
-<meta property="og:description" content="C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？ 1.数组类型12345678910111213141516171819202122232425#include &amp;lt;stdio.h&amp;gt;// 数组类型int main()&amp;#123;	// int a[10];  // 这是我们常用的定义数组的方式	// 定义一个数组类型 int[10">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/000.jpeg">
 <meta property="og:image" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/001.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/002.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/003.png">
-<meta property="og:updated_time" content="2018-01-16T02:44:23.832Z">
+<meta property="og:updated_time" content="2018-01-16T02:45:41.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组类型，指针数组类型数组类型的指针">
-<meta name="twitter:description" content="C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？ 1.数组类型12345678910111213141516171819202122232425#include &amp;lt;stdio.h&amp;gt;// 数组类型int main()&amp;#123;	// int a[10];  // 这是我们常用的定义数组的方式	// 定义一个数组类型 int[10">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/16/001数组类型，指针数组类型数组类型的指针/000.jpeg">
 
 
@@ -363,6 +360,7 @@
 
       
         <img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/000.jpeg" title="C语言中压死初学者的三座大山">
+<a id="more"></a>
 <p>C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？</p>
 <h1 id="1-数组类型"><a href="#1-数组类型" class="headerlink" title="1.数组类型"></a>1.数组类型</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组类型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// int a[10];  // 这是我们常用的定义数组的方式</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 定义一个数组类型 int[10]</span></span><br><span class="line">	typedef int(MyArrayType)[10];  // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小</span><br><span class="line"></span><br><span class="line">	MyArrayType a; <span class="comment">// 相当于int a[10];</span></span><br><span class="line">	<span class="comment">// 赋值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[i] = %d\n"</span>, i, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/001.png" title="程序结果显示">
