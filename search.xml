@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2016校招真题-京东：抛小球]]></title>
+    <url>%2F2018%2F01%2F17%2F002%E4%BA%AC%E4%B8%9C%EF%BC%8C%E6%8A%9B%E5%B0%8F%E7%90%83%2F</url>
+    <content type="text"><![CDATA[1.题目描述 小东和三个朋友一起在楼上抛小球，他们站在楼房的不同层，假设小东站的楼层距离地面N米，球从他手里自由落下，每次落地后反跳回上次下落高度的一半，并以此类推知道全部落到地面不跳，求4个小球一共经过了多少米？(数字都为整数)给定四个整数A,B,C,D，请返回所求结果。 测试样例：100,90,80,70 结果：1020 2.代码编写123456789101112131415161718192021222324class Balls &#123;public: int calcDistance(int A, int B, int C, int D) &#123; // write code here return getHeight(A) + getHeight(B) + getHeight(C) + getHeight(D); &#125;private: int getHeight(float h)&#123; float sum = h; // 第一次降落 while(h &gt; 0.0001)&#123; // 只要是从高度大于0的地方降落，都会回弹降落高度的一半 h = h/2; // 回弹到原来高度的一半 sum += 2*h; // 再一次落地时，其实包含上去和下来 &#125; // return sum; // 题目要求最后的结果为整数，那么只有两种处理方式 1)：舍去多余的部分 2)：结果+0.5取整数 /***************************************** 函数名: ceil 用 法: double ceil(double x); 功 能: 返回大于或者等于指定表达式的最小整数 ******************************************/ return ceil(sum); &#125; &#125;; 3.小结 我认为这道题目考察的是对整数的处理，也就是说，不可以直接使用int型的高度 但是看到讨论区别人的代码后，感觉思路开阔了很多，有人指出，这就是等比数列求极限 以下是等比数列求极限思想代码 12345678class Balls &#123;public: int calcDistance(int A, int B, int C, int D) &#123; // write code here return 3*(A+B+C+D); &#125;&#125;;]]></content>
+      <categories>
+        <category>2016校招编程题</category>
+      </categories>
+      <tags>
+        <tag>2016校招编程题</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数组类型，指针数组类型以及数组类型的指针]]></title>
     <url>%2F2018%2F01%2F16%2F001%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88%2F</url>
     <content type="text"><![CDATA[C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？ 1.数组类型12345678910111213141516171819202122232425#include &lt;stdio.h&gt;// 数组类型int main()&#123; // int a[10]; // 这是我们常用的定义数组的方式 // 定义一个数组类型 int[10] typedef int(MyArrayType)[10]; // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小 MyArrayType a; // 相当于int a[10]; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; a[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("a[i] = %d\n", i, a[i]); &#125; return 0;&#125; 2.指针数组1234567891011121314151617181920212223242526#include &lt;stdio.h&gt;// 指针数组类型int main()&#123; // 定义一个指向大小为10个int类型内存的指针数组类型 typedef int(*pMyArrayType)[10]; int a[10]; pMyArrayType p = &amp;a; // 这里为什么要对a取地址，想想？？ easy // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*p)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("p[%d] = %d\t", i, (*p)[i]); printf("a[%d] = %d\n", i, a[i]); &#125; return 0;&#125; 3.数组类型的指针1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &lt;stdio.h&gt;// 数组类型的指针int main()&#123; // 1.我们可以定义一个数组类型，然后用这个类型来定义数组类型的指针 // 定义一个数组类型 int[10] typedef int(MyArrayType)[10]; // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小 MyArrayType* p; int a[10]; p = &amp;a; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*p)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("p[%d] = %d\t", i, (*p)[i]); printf("a[%d] = %d\n", i, a[i]); &#125; printf("-----------------------------------------------------------\n"); // 2.直接定义 int(*pArr)[10]; // 注意，这里的pArr是变量的名字，不是类型，不可以用来定义新的变量 int b[10]; pArr = &amp;b; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*pArr)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("pArr[%d] = %d\t", i, (*pArr)[i]); printf("b[%d] = %d\n", i, b[i]); &#125; return 0;&#125;]]></content>
