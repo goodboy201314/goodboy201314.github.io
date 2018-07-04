@@ -1,322 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[Oracle数据库的使用]]></title>
-      <url>/2018/07/03/005oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<img src="/2018/07/03/005oracle数据库的使用/000.jpg" title="Oracle数据库">
-<a id="more"></a>
-<h1 id="1-Oracle数据的安装"><a href="#1-Oracle数据的安装" class="headerlink" title="1.Oracle数据的安装"></a>1.Oracle数据的安装</h1><h2 id="1-1-Windows下虚拟机环境-Oracle数据库的安装"><a href="#1-1-Windows下虚拟机环境-Oracle数据库的安装" class="headerlink" title="1.1 Windows下虚拟机环境+Oracle数据库的安装"></a>1.1 Windows下虚拟机环境+Oracle数据库的安装</h2><ul>
-<li>网上教程很多，这里学习的话推荐按照这篇博客搭建：<a href="https://blog.csdn.net/pan_tian/article/details/39523607" target="_blank" rel="noopener">15分钟搭建Linux操作系统+Oracle数据库的环境</a></li>
-<li>如果连接丢失了，请移步网盘链接：<a href="https://pan.baidu.com/s/1UAY-V0TidR0su9-tuw6CDQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1UAY-V0TidR0su9-tuw6CDQ</a> 密码：i2wo</li>
-</ul>
-<h2 id="1-2-Mac下虚拟机环境-Oracle数据库的安装"><a href="#1-2-Mac下虚拟机环境-Oracle数据库的安装" class="headerlink" title="1.2 Mac下虚拟机环境+Oracle数据库的安装"></a>1.2 Mac下虚拟机环境+Oracle数据库的安装</h2><ul>
-<li>上述搭建过程在Mac下要注意一点，那就是安装完成虚拟机之后，发现上面没有管理这个菜单栏，那么如何导入虚拟机文件么？</li>
-<li>双击.ova文件即可</li>
-</ul>
-<h1 id="2-Oracle数据库的基本概念"><a href="#2-Oracle数据库的基本概念" class="headerlink" title="2.Oracle数据库的基本概念"></a>2.Oracle数据库的基本概念</h1><h2 id="2-1一个-Oracle-服务器"><a href="#2-1一个-Oracle-服务器" class="headerlink" title="2.1一个 Oracle 服务器"></a>2.1一个 Oracle 服务器</h2><ul>
-<li>是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理</li>
-<li>由一个<code>Oracle 实例</code> 和一个 <code>Oracle 数据库</code>组成</li>
-<li>Oracle 数据库: 位于硬盘上实际存放数据的文件, 这些文件组织在一起, 成为一个逻辑整体, 即为 Oracle 数据库。 因此在 Oracle 看来, “数据库” 是指硬盘上文件的逻辑集合, 必须要与内存里实例合作, 才能对外提供数据管理服务。</li>
-<li>Oracle 实例: 位于物理内存里的数据结构. 它由一个共享的内存池和多个后台进程所组成, 共享的内存池可以被所有进程访问。 用户如果要存取数据库(也就是硬盘上的文件) 里的数据, 必须通过实例才能实现, 不能直接读取硬盘上的文件。</li>
-</ul>
-<h2 id="2-2-Oracle数据库的结构"><a href="#2-2-Oracle数据库的结构" class="headerlink" title="2.2 Oracle数据库的结构"></a>2.2 Oracle数据库的结构</h2><img src="/2018/07/03/005oracle数据库的使用/001.png" title="Oracle数据库的结构">
-<h2 id="2-3-管理机制"><a href="#2-3-管理机制" class="headerlink" title="2.3 管理机制"></a>2.3 管理机制</h2><ul>
-<li>oracle：基于用户的管理机制<ul>
-<li>创建一个信息系统, 给你分配一个用户, 创建表空间 ..创建表..  </li>
-</ul>
-</li>
-<li>mysql：基于数据库的管理机制<ul>
-<li>创建一个信息系统,创建一个数据库</li>
-</ul>
-</li>
-</ul>
-<h1 id="3-基本的select语句"><a href="#3-基本的select语句" class="headerlink" title="3.基本的select语句"></a>3.基本的select语句</h1><h2 id="3-1-简单使用规则"><a href="#3-1-简单使用规则" class="headerlink" title="3.1 简单使用规则"></a>3.1 简单使用规则</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*|&#123;[<span class="keyword">DISTINCT</span>] <span class="keyword">column</span>|expression [<span class="keyword">alias</span>],...&#125;</span><br><span class="line"><span class="keyword">FROM</span>	<span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>说明</p>
-<ul>
-<li>SQL 语言<code>大小写不敏感</code></li>
-<li>SQL 可以写在一行或者多行</li>
-<li><code>关键字（例如select）不能被缩写也不能分行</code></li>
-<li>各子句一般要分行写</li>
-<li>使用缩进提高语句的可读性</li>
-</ul>
-</li>
-<li><p>总结</p>
-<ul>
-<li><p>select后面可以是属性列</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> last_name, salary</span><br><span class="line"><span class="keyword">FROM</span>   employees;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>select后面可以是表达式</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> last_name, salary, salary + <span class="number">300</span></span><br><span class="line"><span class="keyword">FROM</span>   employees;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>select后面可以是函数</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-2-列的别名"><a href="#3-2-列的别名" class="headerlink" title="3.2 列的别名"></a>3.2 列的别名</h2><ul>
-<li>重命名一个列</li>
-<li>便于计算</li>
-<li>紧跟列名，也可以在列名和别名之间加入关键字AS，别名使用<code>双引号</code>，以便在别名中包含空格或特殊的字符并区分大小写</li>
-<li>AS可以省略；当别名没有空格的时候，双引号可以省略</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> last_name <span class="string">"Name"</span>, salary*<span class="number">12</span> <span class="string">"Annual Salary"</span></span><br><span class="line"><span class="keyword">FROM</span>   employees;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> last_name <span class="keyword">AS</span> <span class="keyword">name</span>, commission_pct comm</span><br><span class="line"><span class="keyword">FROM</span>   employees;  <span class="comment">-- 省略双引号，省略as</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-3-连接符"><a href="#3-3-连接符" class="headerlink" title="3.3 连接符"></a>3.3 连接符</h2><ul>
-<li>把列与列，列与字符连接在一起</li>
-<li>用 ‘||’表示</li>
-<li>可以用来‘合成’列</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	last_name||job_id <span class="keyword">AS</span> <span class="string">"Employees"</span></span><br><span class="line"><span class="keyword">FROM</span> 	employees;</span><br></pre></td></tr></table></figure>
-<h2 id="3-4-字符串"><a href="#3-4-字符串" class="headerlink" title="3.4 字符串"></a>3.4 字符串</h2><ul>
-<li>字符串可以是 SELECT 列表中的一个字符,数字,日期</li>
-<li>日期和字符只能在<code>单引号</code>中出现（单引号，单引号，单引号）</li>
-<li>每当返回一行时，字符串被输出一次</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> last_name ||<span class="string">' is a '</span>||job_id </span><br><span class="line">		<span class="keyword">AS</span> <span class="string">"Employee Details"</span></span><br><span class="line"><span class="keyword">FROM</span>   employees;</span><br></pre></td></tr></table></figure>
-<h2 id="3-5-捣蛋鬼NULL"><a href="#3-5-捣蛋鬼NULL" class="headerlink" title="3.5 捣蛋鬼NULL"></a>3.5 捣蛋鬼NULL</h2><ul>
-<li>空值是无效的，未指定的，未知的或不可预知的值</li>
-<li>空值不是空格或者0</li>
-<li>注意点：<ul>
-<li>任何表达式和null运算都为空</li>
-<li>null != null （查询不为空的时候，使用的是 xx is not null ，而不是 xx !=null）</li>
-</ul>
-</li>
-</ul>
-<h1 id="4-过滤和排序"><a href="#4-过滤和排序" class="headerlink" title="4. 过滤和排序"></a>4. 过滤和排序</h1><h2 id="4-1-过滤"><a href="#4-1-过滤" class="headerlink" title="4.1 过滤"></a>4.1 过滤</h2><ul>
-<li>使用where语句，将不满足条件的语句过滤掉</li>
-<li>where 子句紧随 from 子句</li>
-<li>between: 来显示在一个区间内的值(包含两端)</li>
-<li>in: 显示列表中的值</li>
-<li>like: 模糊查询<ul>
-<li>% 代表零个或多个字符(任意个字符)</li>
-<li>_代表一个字符</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	*|&#123;[<span class="keyword">DISTINCT</span>] <span class="keyword">column</span>|expression [<span class="keyword">alias</span>],...&#125;</span><br><span class="line"><span class="keyword">FROM</span>	<span class="keyword">table</span></span><br><span class="line">[<span class="keyword">WHERE</span>	condition(s)];</span><br></pre></td></tr></table></figure>
-<h2 id="4-2-字符和日期"><a href="#4-2-字符和日期" class="headerlink" title="4.2 字符和日期"></a>4.2 字符和日期</h2><ul>
-<li>字符和日期要包含在单引号中（单引号，单引号，单引号）</li>
-<li>字符大小写敏感，日期格式敏感</li>
-<li>默认的日期格式是 DD-MON-RR</li>
-</ul>
-<h2 id="4-3-排序"><a href="#4-3-排序" class="headerlink" title="4.3 排序"></a>4.3 排序</h2><ul>
-<li>使用 ORDER BY 子句排序<ul>
-<li>ASC（ascend）: 升序 </li>
-<li>DESC（descend）: 降序</li>
-</ul>
-</li>
-<li>排序的规则<ul>
-<li>可以按照select语句中的列名排序</li>
-<li>可以按照别名列名排序</li>
-<li>可以按照select语句中的列名的顺序值排序</li>
-<li>如果要按照多列进行排序，则规则是先按照第一列排序，如果相同，则按照第二列排序；以此类推</li>
-<li>Desc:</li>
-</ul>
-</li>
-</ul>
-<h1 id="5-单行函数"><a href="#5-单行函数" class="headerlink" title="5 单行函数"></a>5 单行函数</h1><h2 id="5-1-SQL函数"><a href="#5-1-SQL函数" class="headerlink" title="5.1 SQL函数"></a>5.1 SQL函数</h2><ul>
-<li>SQL 函数</li>
-<li>注意：函数可以没有参数，但必须要有返回值<img src="/2018/07/03/005oracle数据库的使用/002.png" title="SQL 函数"></li>
-<li>两种 SQL 函数<img src="/2018/07/03/005oracle数据库的使用/003.png" title="两种 SQL 函数">
-</li>
-</ul>
-<h2 id="5-2单行函数"><a href="#5-2单行函数" class="headerlink" title="5.2单行函数"></a>5.2单行函数</h2><ul>
-<li>操作数据对象</li>
-<li>接受参数返回一个结果</li>
-<li>只对一行进行变换</li>
-<li>每行返回一个结果</li>
-<li>可以转换数据类型</li>
-<li>可以嵌套</li>
-<li>参数可以是一列或一个值<img src="/2018/07/03/005oracle数据库的使用/004.png" title="单行函数">
-</li>
-</ul>
-<h1 id="6-分组函数"><a href="#6-分组函数" class="headerlink" title="6.分组函数"></a>6.分组函数</h1><h2 id="6-1-什么是分组函数"><a href="#6-1-什么是分组函数" class="headerlink" title="6.1 什么是分组函数"></a>6.1 什么是分组函数</h2><ul>
-<li>分组函数作用于一组数据，并对一组数据返回一个值。</li>
-<li>AVG</li>
-<li>COUNT</li>
-<li>MAX</li>
-<li>MIN</li>
-<li>SUM</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>	[<span class="keyword">column</span>,] group_function(<span class="keyword">column</span>), ...</span><br><span class="line"><span class="keyword">FROM</span>		<span class="keyword">table</span></span><br><span class="line">[<span class="keyword">WHERE</span>	condition]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span>	<span class="keyword">column</span>]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span>	<span class="keyword">column</span>];</span><br></pre></td></tr></table></figure>
-<h2 id="6-2-GROUP-BY-子句"><a href="#6-2-GROUP-BY-子句" class="headerlink" title="6.2 GROUP BY 子句"></a>6.2 GROUP BY 子句</h2><ul>
-<li>在SELECT 列表中所有未包含在组函数中的列都应该包含在 GROUP BY 子句中</li>
-<li>包含在 GROUP BY 子句中的列不必包含在SELECT 列表中</li>
-<li>不能在 WHERE 子句中使用组函数（注意）</li>
-<li>可以在 HAVING 子句中使用组函数</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 数据库 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 数据库 </tag>
-            
-            <tag> Oracle </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2016校招真题-其他：顺时针旋转矩阵]]></title>
-      <url>/2018/01/18/004%E5%85%B6%E4%BB%96%EF%BC%8C%E9%A1%BA%E6%97%B6%E9%92%88%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5/</url>
-      <content type="html"><![CDATA[<img src="/2018/01/18/004其他，顺时针旋转矩阵/000.png" title="2016校招真题-其他：顺时针旋转矩阵">
-<a id="more"></a>
-<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><ul>
-<li>有一个NxN整数矩阵，请编写一个算法，将矩阵顺时针旋转90度。</li>
-<li>给定一个NxN的矩阵，和矩阵的阶数N,请返回旋转后的NxN矩阵,保证N小于等于300。</li>
-<li>测试样例：<code>[[1,2,3],[4,5,6],[7,8,9]],3</code></li>
-<li>返回：<code>[[7,4,1],[8,5,2],[9,6,3]]</code></li>
-</ul>
-<h1 id="2-代码编写"><a href="#2-代码编写" class="headerlink" title="2.代码编写"></a>2.代码编写</h1><ul>
-<li>提交代码</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*****************</span></span><br><span class="line"><span class="comment"> * 思想：</span></span><br><span class="line"><span class="comment"> *     在旋转的时候，我们应该一行一行或者一列一列的来考虑</span></span><br><span class="line"><span class="comment"> *     如果按照一行一行来考虑，那么:</span></span><br><span class="line"><span class="comment"> *		          原矩阵的第一行会变成最后一列</span></span><br><span class="line"><span class="comment"> *               第二行会变成倒数第二列</span></span><br><span class="line"><span class="comment"> *               ......................</span></span><br><span class="line"><span class="comment">**********************/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rotate</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; rotateMatrix(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mat, <span class="keyword">int</span> n) &#123;</span><br><span class="line">		<span class="comment">// write code here</span></span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; res(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n));</span><br><span class="line">		<span class="keyword">int</span> k = n - <span class="number">1</span>; <span class="comment">// 从最后一列开始，然后倒数第二列，倒数第三列</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">// 按行遍历原数组：mat</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;::iterator p = mat.begin(); p != mat.end();++p) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">				res[i][k] = (*p)[i];  <span class="comment">// p是一个指针，指向的是一个“街区”</span></span><br><span class="line">			&#125;</span><br><span class="line">			k--;</span><br><span class="line">		&#125;<span class="comment">// end for</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试代码</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*****************</span></span><br><span class="line"><span class="comment"> * 思想：</span></span><br><span class="line"><span class="comment"> *     在旋转的时候，我们应该一行一行或者一列一列的来考虑</span></span><br><span class="line"><span class="comment"> *     如果按照一行一行来考虑，那么:</span></span><br><span class="line"><span class="comment"> *		          原矩阵的第一行会变成最后一列</span></span><br><span class="line"><span class="comment"> *               第二行会变成倒数第二列</span></span><br><span class="line"><span class="comment"> *               ..............</span></span><br><span class="line"><span class="comment">**********************/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rotate</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; rotateMatrix(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mat, <span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; res(n,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n));</span><br><span class="line">        <span class="keyword">int</span> k = n - <span class="number">1</span>; <span class="comment">// 从最后一列开始，然后倒数第二列，倒数第三列</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 按行遍历原数组：mat</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;::iterator p = mat.begin(); p != mat.end();++p) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                res[i][k] = (*p)[i];  <span class="comment">// p是一个指针，指向的是一个“街区”</span></span><br><span class="line">            &#125;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;<span class="comment">// end for</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ===================== 测试代码 ======================== //</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;mat, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; mat[i][j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; mat(&#123; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,&#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125; &#125;);</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"before:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    print(mat, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    Rotate r;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; res = r.rotateMatrix(mat, n);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"after:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    print(res, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2018/01/18/004其他，顺时针旋转矩阵/001.png" title="测试结果显示">
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><ul>
-<li>讨论区有人提出可以找规律，直接使用mat[i][j]被旋转到了mat[j][n-i-1]的位置</li>
-<li>脑子果然是个好东西，以后一定要好好用用</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 2016校招编程题 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 2016校招编程题 </tag>
-            
-            <tag> C/C++ </tag>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 简单编程题 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2016校招真题-去哪儿：字符串替换]]></title>
-      <url>/2018/01/17/003%E5%8E%BB%E5%93%AA%E5%84%BF%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2/</url>
-      <content type="html"><![CDATA[<img src="/2018/01/17/003去哪儿，字符串替换/000.png" title="2016校招真题-去哪儿：字符串替换">
-<a id="more"></a>
-<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><ul>
-<li>请你实现一个简单的字符串替换函数。原串中需要替换的占位符为”%s”,请按照参数列表的顺序一一替换占位符。若参数列表的字符数大于占位符个数。则将剩下的参数字符添加到字符串的结尾。</li>
-<li>给定一个字符串A，同时给定它的长度n及参数字符数组arg，请返回替换后的字符串。保证参数个数大于等于占位符个数。保证原串由大小写英文字母组成，同时长度小于等于500。</li>
-<li>测试样例：<code>&quot;A%sC%sE&quot;,7,[&#39;B&#39;,&#39;D&#39;,&#39;F&#39;]</code></li>
-<li>返回：<code>&quot;ABCDEF&quot;</code></li>
-</ul>
-<h1 id="2-代码编写"><a href="#2-代码编写" class="headerlink" title="2.代码编写"></a>2.代码编写</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************************************</span></span><br><span class="line"><span class="comment">* 思路：</span></span><br><span class="line"><span class="comment">* 使用两个指针，分别一前一后；</span></span><br><span class="line"><span class="comment">* 如果这两个指针下的值恰好对应为%s，那么替换</span></span><br><span class="line"><span class="comment">*********************************************/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringFormat</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="built_in">string</span> <span class="title">formatString</span><span class="params">(<span class="built_in">string</span> A, <span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; arg, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// write code here</span></span><br><span class="line">		<span class="keyword">char</span> buf[<span class="number">505</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 最终的结果存储数组</span></span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;  <span class="comment">// 循环变量</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> pre = <span class="number">0</span>, cur=<span class="number">1</span>; <span class="comment">// 指针循环变量</span></span><br><span class="line">		<span class="keyword">while</span> (pre &lt; n) &#123;</span><br><span class="line">			<span class="keyword">if</span> (A[pre] == <span class="string">'%'</span> &amp;&amp; cur&lt;n &amp;&amp; A[cur] == <span class="string">'s'</span>) &#123;</span><br><span class="line">				buf[i++] = arg[j++];</span><br><span class="line">				pre += <span class="number">2</span>;</span><br><span class="line">				cur += <span class="number">2</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				buf[i++] = A[pre];</span><br><span class="line">				++pre;</span><br><span class="line">				++cur;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="comment">// end while</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//  如果vector中参数多了，那么添加在最后</span></span><br><span class="line">		<span class="keyword">while</span> (j &lt; arg.size()) &#123;</span><br><span class="line">			buf[i++] = arg[j++];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">string</span>(buf);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><ul>
-<li>其实一开始的想法是直接查找”%s”的位置，然后字符串替换</li>
-<li>但是后来想到可以用指针的形式练习一下，所以最后就用指针的方式做了</li>
-<li>看了一下大家讨论的结果<ul>
-<li>有人提出把”%s”最为分割符，分割出数组，然后在连接起来，感觉很不错的样子</li>
-<li>还有人提出利用正则表达式，厉害</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 2016校招编程题 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 2016校招编程题 </tag>
-            
-            <tag> C/C++ </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[2016校招真题-京东：抛小球]]></title>
-      <url>/2018/01/17/002%E4%BA%AC%E4%B8%9C%EF%BC%8C%E6%8A%9B%E5%B0%8F%E7%90%83/</url>
-      <content type="html"><![CDATA[<img src="/2018/01/17/002京东，抛小球/000.jpg" title="2016校招真题-京东：抛小球">
-<a id="more"></a>
-<h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><ul>
-<li>小东和三个朋友一起在楼上抛小球，他们站在楼房的不同层，假设小东站的楼层距离地面N米，球从他手里自由落下，每次落地后反跳回上次下落高度的一半，并以此类推知道全部落到地面不跳，求4个小球一共经过了多少米？(数字都为整数)给定四个整数A,B,C,D，请返回所求结果。</li>
-<li>测试样例：<code>100,90,80,70</code></li>
-<li>结果：<code>1020</code></li>
-</ul>
-<h1 id="2-代码编写"><a href="#2-代码编写" class="headerlink" title="2.代码编写"></a>2.代码编写</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Balls</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">calcDistance</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C, <span class="keyword">int</span> D)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">return</span> getHeight(A) + getHeight(B) + getHeight(C) + getHeight(D);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getHeight</span><span class="params">(<span class="keyword">float</span> h)</span></span>&#123;</span><br><span class="line">        <span class="keyword">float</span> sum = h;  <span class="comment">// 第一次降落</span></span><br><span class="line">        <span class="keyword">while</span>(h &gt; <span class="number">0.0001</span>)&#123;   <span class="comment">// 只要是从高度大于0的地方降落，都会回弹降落高度的一半</span></span><br><span class="line">            h = h/<span class="number">2</span>; <span class="comment">// 回弹到原来高度的一半</span></span><br><span class="line">            sum += <span class="number">2</span>*h;  <span class="comment">// 再一次落地时，其实包含上去和下来</span></span><br><span class="line">        &#125;</span><br><span class="line">     <span class="comment">// return sum;  // 题目要求最后的结果为整数，那么只有两种处理方式</span></span><br><span class="line">     <span class="comment">//                1)：舍去多余的部分  2)：结果+0.5取整数</span></span><br><span class="line">     <span class="comment">/*****************************************</span></span><br><span class="line"><span class="comment">     函数名: ceil</span></span><br><span class="line"><span class="comment">	 用 法: double ceil(double x);</span></span><br><span class="line"><span class="comment">	 功 能: 返回大于或者等于指定表达式的最小整数</span></span><br><span class="line"><span class="comment">     ******************************************/</span></span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">ceil</span>(sum); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="3-小结"><a href="#3-小结" class="headerlink" title="3.小结"></a>3.小结</h1><ul>
-<li>我认为这道题目考察的是对整数的处理，也就是说，不可以直接使用int型的高度</li>
-<li>但是看到讨论区别人的代码后，感觉思路开阔了很多，有人指出，这就是等比数列求极限</li>
-<li><p>以下是等比数列求极限思想代码</p>
-  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Balls</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">calcDistance</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C, <span class="keyword">int</span> D)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>*(A+B+C+D);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      
-        <categories>
-            
-            <category> 2016校招编程题 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 2016校招编程题 </tag>
-            
-            <tag> C/C++ </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[数组类型，指针数组类型以及数组类型的指针]]></title>
-      <url>/2018/01/16/001%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88/</url>
-      <content type="html"><![CDATA[<img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/000.jpeg" title="C语言中压死初学者的三座大山">
-<a id="more"></a>
-<p>C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？</p>
-<h1 id="1-数组类型"><a href="#1-数组类型" class="headerlink" title="1.数组类型"></a>1.数组类型</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组类型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// int a[10];  // 这是我们常用的定义数组的方式</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 定义一个数组类型 int[10]</span></span><br><span class="line">	typedef int(MyArrayType)[10];  // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小</span><br><span class="line"></span><br><span class="line">	MyArrayType a; <span class="comment">// 相当于int a[10];</span></span><br><span class="line">	<span class="comment">// 赋值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[i] = %d\n"</span>, i, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/001.png" title="程序结果显示">
-<h1 id="2-指针数组"><a href="#2-指针数组" class="headerlink" title="2.指针数组"></a>2.指针数组</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 指针数组类型</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 定义一个指向大小为10个int类型内存的指针数组类型</span></span><br><span class="line">	typedef int(*pMyArrayType)[10];</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line">	 </span><br><span class="line">	pMyArrayType p = &amp;a; <span class="comment">// 这里为什么要对a取地址，想想？？  easy</span></span><br><span class="line"></span><br><span class="line">	 <span class="comment">// 赋值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		(*p)[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"p[%d] = %d\t"</span>, i, (*p)[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d] = %d\n"</span>, i, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/002.png" title="程序结果显示">
-<h1 id="3-数组类型的指针"><a href="#3-数组类型的指针" class="headerlink" title="3.数组类型的指针"></a>3.数组类型的指针</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组类型的指针</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//  1.我们可以定义一个数组类型，然后用这个类型来定义数组类型的指针</span></span><br><span class="line">	<span class="comment">// 定义一个数组类型 int[10]</span></span><br><span class="line">	typedef int(MyArrayType)[10];  // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小</span><br><span class="line">	MyArrayType* p;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line">	p = &amp;a;</span><br><span class="line">	<span class="comment">// 赋值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		(*p)[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"p[%d] = %d\t"</span>, i, (*p)[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"a[%d] = %d\n"</span>, i, a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"-----------------------------------------------------------\n"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//  2.直接定义  </span></span><br><span class="line">	<span class="keyword">int</span>(*pArr)[<span class="number">10</span>];  <span class="comment">// 注意，这里的pArr是变量的名字，不是类型，不可以用来定义新的变量</span></span><br><span class="line">	<span class="keyword">int</span> b[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">	pArr = &amp;b;</span><br><span class="line">	<span class="comment">// 赋值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		(*pArr)[i] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 打印</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"pArr[%d] = %d\t"</span>, i, (*pArr)[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"b[%d] = %d\n"</span>, i, b[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2018/01/16/001数组类型，指针数组类型数组类型的指针/003.png" title="程序结果显示">]]></content>
-      
-        <categories>
-            
-            <category> C/C++ </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> C/C++难点 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[Oracle数据库的使用]]></title>
+    <url>%2F2018%2F07%2F03%2F005oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[1.Oracle数据的安装1.1 Windows下虚拟机环境+Oracle数据库的安装 网上教程很多，这里学习的话推荐按照这篇博客搭建：15分钟搭建Linux操作系统+Oracle数据库的环境 如果连接丢失了，请移步网盘链接：https://pan.baidu.com/s/1UAY-V0TidR0su9-tuw6CDQ 密码：i2wo 1.2 Mac下虚拟机环境+Oracle数据库的安装 上述搭建过程在Mac下要注意一点，那就是安装完成虚拟机之后，发现上面没有管理这个菜单栏，那么如何导入虚拟机文件么？ 双击.ova文件即可 2.Oracle数据库的基本概念2.1一个 Oracle 服务器 是一个数据管理系统(RDBMS)，它提供开放的, 全面的, 近乎完整的信息管理 由一个Oracle 实例 和一个 Oracle 数据库组成 Oracle 数据库: 位于硬盘上实际存放数据的文件, 这些文件组织在一起, 成为一个逻辑整体, 即为 Oracle 数据库。 因此在 Oracle 看来, “数据库” 是指硬盘上文件的逻辑集合, 必须要与内存里实例合作, 才能对外提供数据管理服务。 Oracle 实例: 位于物理内存里的数据结构. 它由一个共享的内存池和多个后台进程所组成, 共享的内存池可以被所有进程访问。 用户如果要存取数据库(也就是硬盘上的文件) 里的数据, 必须通过实例才能实现, 不能直接读取硬盘上的文件。 2.2 Oracle数据库的结构 2.3 管理机制 oracle：基于用户的管理机制 创建一个信息系统, 给你分配一个用户, 创建表空间 ..创建表.. mysql：基于数据库的管理机制 创建一个信息系统,创建一个数据库 3.基本的select语句3.1 简单使用规则12SELECT *|&#123;[DISTINCT] column|expression [alias],...&#125;FROM table; 说明 SQL 语言大小写不敏感 SQL 可以写在一行或者多行 关键字（例如select）不能被缩写也不能分行 各子句一般要分行写 使用缩进提高语句的可读性 总结 select后面可以是属性列 12SELECT last_name, salaryFROM employees; select后面可以是表达式 12SELECT last_name, salary, salary + 300FROM employees; select后面可以是函数 3.2 列的别名 重命名一个列 便于计算 紧跟列名，也可以在列名和别名之间加入关键字AS，别名使用双引号，以便在别名中包含空格或特殊的字符并区分大小写 AS可以省略；当别名没有空格的时候，双引号可以省略 12345SELECT last_name "Name", salary*12 "Annual Salary"FROM employees;SELECT last_name AS name, commission_pct commFROM employees; -- 省略双引号，省略as 3.3 连接符 把列与列，列与字符连接在一起 用 ‘||’表示 可以用来‘合成’列 12SELECT last_name||job_id AS "Employees"FROM employees; 3.4 字符串 字符串可以是 SELECT 列表中的一个字符,数字,日期 日期和字符只能在单引号中出现（单引号，单引号，单引号） 每当返回一行时，字符串被输出一次 123SELECT last_name ||' is a '||job_id AS "Employee Details"FROM employees; 3.5 捣蛋鬼NULL 空值是无效的，未指定的，未知的或不可预知的值 空值不是空格或者0 注意点： 任何表达式和null运算都为空 null != null （查询不为空的时候，使用的是 xx is not null ，而不是 xx !=null） 4. 过滤和排序4.1 过滤 使用where语句，将不满足条件的语句过滤掉 where 子句紧随 from 子句 between: 来显示在一个区间内的值(包含两端) in: 显示列表中的值 like: 模糊查询 % 代表零个或多个字符(任意个字符) _代表一个字符 123SELECT *|&#123;[DISTINCT] column|expression [alias],...&#125;FROM table[WHERE condition(s)]; 4.2 字符和日期 字符和日期要包含在单引号中（单引号，单引号，单引号） 字符大小写敏感，日期格式敏感 默认的日期格式是 DD-MON-RR 4.3 排序 使用 ORDER BY 子句排序 ASC（ascend）: 升序 DESC（descend）: 降序 排序的规则 可以按照select语句中的列名排序 可以按照别名列名排序 可以按照select语句中的列名的顺序值排序 如果要按照多列进行排序，则规则是先按照第一列排序，如果相同，则按照第二列排序；以此类推 Desc: 5 单行函数5.1 SQL函数 SQL 函数 注意：函数可以没有参数，但必须要有返回值 两种 SQL 函数 5.2单行函数 操作数据对象 接受参数返回一个结果 只对一行进行变换 每行返回一个结果 可以转换数据类型 可以嵌套 参数可以是一列或一个值 6.分组函数6.1 什么是分组函数 分组函数作用于一组数据，并对一组数据返回一个值。 AVG COUNT MAX MIN SUM 12345SELECT [column,] group_function(column), ...FROM table[WHERE condition][GROUP BY column][ORDER BY column]; 6.2 GROUP BY 子句 在SELECT 列表中所有未包含在组函数中的列都应该包含在 GROUP BY 子句中 包含在 GROUP BY 子句中的列不必包含在SELECT 列表中 不能在 WHERE 子句中使用组函数（注意） 可以在 HAVING 子句中使用组函数]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2016校招真题-其他：顺时针旋转矩阵]]></title>
+    <url>%2F2018%2F01%2F18%2F004%E5%85%B6%E4%BB%96%EF%BC%8C%E9%A1%BA%E6%97%B6%E9%92%88%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5%2F</url>
+    <content type="text"><![CDATA[1.题目描述 有一个NxN整数矩阵，请编写一个算法，将矩阵顺时针旋转90度。 给定一个NxN的矩阵，和矩阵的阶数N,请返回旋转后的NxN矩阵,保证N小于等于300。 测试样例：[[1,2,3],[4,5,6],[7,8,9]],3 返回：[[7,4,1],[8,5,2],[9,6,3]] 2.代码编写 提交代码 1234567891011121314151617181920212223242526/***************** * 思想： * 在旋转的时候，我们应该一行一行或者一列一列的来考虑 * 如果按照一行一行来考虑，那么: * 原矩阵的第一行会变成最后一列 * 第二行会变成倒数第二列 * ......................**********************/class Rotate &#123;public: vector&lt;vector&lt;int&gt; &gt; rotateMatrix(vector&lt;vector&lt;int&gt; &gt; mat, int n) &#123; // write code here vector&lt;vector&lt;int&gt; &gt; res(n,vector&lt;int&gt;(n)); int k = n - 1; // 从最后一列开始，然后倒数第二列，倒数第三列 // 按行遍历原数组：mat for (vector&lt;vector&lt;int&gt; &gt;::iterator p = mat.begin(); p != mat.end();++p) &#123; for (int i = 0; i &lt; n; i++) &#123; res[i][k] = (*p)[i]; // p是一个指针，指向的是一个“街区” &#125; k--; &#125;// end for return res; &#125;&#125;; 测试代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;iostream&gt;#include &lt;vector&gt;using namespace std;/***************** * 思想： * 在旋转的时候，我们应该一行一行或者一列一列的来考虑 * 如果按照一行一行来考虑，那么: * 原矩阵的第一行会变成最后一列 * 第二行会变成倒数第二列 * ..............**********************/class Rotate &#123;public: vector&lt;vector&lt;int&gt; &gt; rotateMatrix(vector&lt;vector&lt;int&gt; &gt; mat, int n) &#123; // write code here vector&lt;vector&lt;int&gt; &gt; res(n,vector&lt;int&gt;(n)); int k = n - 1; // 从最后一列开始，然后倒数第二列，倒数第三列 // 按行遍历原数组：mat for (vector&lt;vector&lt;int&gt; &gt;::iterator p = mat.begin(); p != mat.end();++p) &#123; for (int i = 0; i &lt; n; i++) &#123; res[i][k] = (*p)[i]; // p是一个指针，指向的是一个“街区” &#125; k--; &#125;// end for return res; &#125;&#125;;// ===================== 测试代码 ======================== //void print(vector&lt;vector&lt;int&gt; &gt; &amp;mat, int n)&#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; n; j++) &#123; cout &lt;&lt; mat[i][j] &lt;&lt; " "; &#125; cout &lt;&lt; endl; &#125;&#125;int main()&#123; vector&lt;vector&lt;int&gt; &gt; mat(&#123; &#123;1,2,3&#125;,&#123;4,5,6&#125;,&#123;7,8,9&#125; &#125;); int n = 3; cout &lt;&lt; "before:" &lt;&lt; endl; print(mat, 3); Rotate r; vector&lt;vector&lt;int&gt; &gt; res = r.rotateMatrix(mat, n); cout &lt;&lt; "after:" &lt;&lt; endl; print(res, 3); return 0;&#125; 3.小结 讨论区有人提出可以找规律，直接使用mat[i][j]被旋转到了mat[j][n-i-1]的位置 脑子果然是个好东西，以后一定要好好用用]]></content>
+      <categories>
+        <category>2016校招编程题</category>
+      </categories>
+      <tags>
+        <tag>2016校招编程题</tag>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>简单编程题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2016校招真题-去哪儿：字符串替换]]></title>
+    <url>%2F2018%2F01%2F17%2F003%E5%8E%BB%E5%93%AA%E5%84%BF%EF%BC%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[1.题目描述 请你实现一个简单的字符串替换函数。原串中需要替换的占位符为”%s”,请按照参数列表的顺序一一替换占位符。若参数列表的字符数大于占位符个数。则将剩下的参数字符添加到字符串的结尾。 给定一个字符串A，同时给定它的长度n及参数字符数组arg，请返回替换后的字符串。保证参数个数大于等于占位符个数。保证原串由大小写英文字母组成，同时长度小于等于500。 测试样例：&quot;A%sC%sE&quot;,7,[&#39;B&#39;,&#39;D&#39;,&#39;F&#39;] 返回：&quot;ABCDEF&quot; 2.代码编写123456789101112131415161718192021222324252627282930313233/********************************************* 思路：* 使用两个指针，分别一前一后；* 如果这两个指针下的值恰好对应为%s，那么替换*********************************************/class StringFormat &#123;public: string formatString(string A, int n, vector&lt;char&gt; arg, int m) &#123; // write code here char buf[505] = &#123;0&#125;; // 最终的结果存储数组 int i = 0, j = 0; // 循环变量 int pre = 0, cur=1; // 指针循环变量 while (pre &lt; n) &#123; if (A[pre] == '%' &amp;&amp; cur&lt;n &amp;&amp; A[cur] == 's') &#123; buf[i++] = arg[j++]; pre += 2; cur += 2; &#125; else &#123; buf[i++] = A[pre]; ++pre; ++cur; &#125; &#125; // end while // 如果vector中参数多了，那么添加在最后 while (j &lt; arg.size()) &#123; buf[i++] = arg[j++]; &#125; return string(buf); &#125;&#125;; 3.小结 其实一开始的想法是直接查找”%s”的位置，然后字符串替换 但是后来想到可以用指针的形式练习一下，所以最后就用指针的方式做了 看了一下大家讨论的结果 有人提出把”%s”最为分割符，分割出数组，然后在连接起来，感觉很不错的样子 还有人提出利用正则表达式，厉害]]></content>
+      <categories>
+        <category>2016校招编程题</category>
+      </categories>
+      <tags>
+        <tag>2016校招编程题</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2016校招真题-京东：抛小球]]></title>
+    <url>%2F2018%2F01%2F17%2F002%E4%BA%AC%E4%B8%9C%EF%BC%8C%E6%8A%9B%E5%B0%8F%E7%90%83%2F</url>
+    <content type="text"><![CDATA[1.题目描述 小东和三个朋友一起在楼上抛小球，他们站在楼房的不同层，假设小东站的楼层距离地面N米，球从他手里自由落下，每次落地后反跳回上次下落高度的一半，并以此类推知道全部落到地面不跳，求4个小球一共经过了多少米？(数字都为整数)给定四个整数A,B,C,D，请返回所求结果。 测试样例：100,90,80,70 结果：1020 2.代码编写12345678910111213141516171819202122232425class Balls &#123;public: int calcDistance(int A, int B, int C, int D) &#123; // write code here return getHeight(A) + getHeight(B) + getHeight(C) + getHeight(D); &#125;private: int getHeight(float h)&#123; float sum = h; // 第一次降落 while(h &gt; 0.0001)&#123; // 只要是从高度大于0的地方降落，都会回弹降落高度的一半 h = h/2; // 回弹到原来高度的一半 sum += 2*h; // 再一次落地时，其实包含上去和下来 &#125; // return sum; // 题目要求最后的结果为整数，那么只有两种处理方式 // 1)：舍去多余的部分 2)：结果+0.5取整数 /***************************************** 函数名: ceil 用 法: double ceil(double x); 功 能: 返回大于或者等于指定表达式的最小整数 ******************************************/ return ceil(sum); &#125; &#125;; 3.小结 我认为这道题目考察的是对整数的处理，也就是说，不可以直接使用int型的高度 但是看到讨论区别人的代码后，感觉思路开阔了很多，有人指出，这就是等比数列求极限 以下是等比数列求极限思想代码 12345678class Balls &#123;public: int calcDistance(int A, int B, int C, int D) &#123; // write code here return 3*(A+B+C+D); &#125;&#125;;]]></content>
+      <categories>
+        <category>2016校招编程题</category>
+      </categories>
+      <tags>
+        <tag>2016校招编程题</tag>
+        <tag>C/C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数组类型，指针数组类型以及数组类型的指针]]></title>
+    <url>%2F2018%2F01%2F16%2F001%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%8C%87%E9%92%88%2F</url>
+    <content type="text"><![CDATA[C/C++中有数组类型，指针数组，数组类型的指针，有人称之为压死C语言初学者的三座大山，那么如何区分呢？ 1.数组类型12345678910111213141516171819202122232425#include &lt;stdio.h&gt;// 数组类型int main()&#123; // int a[10]; // 这是我们常用的定义数组的方式 // 定义一个数组类型 int[10] typedef int(MyArrayType)[10]; // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小 MyArrayType a; // 相当于int a[10]; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; a[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("a[i] = %d\n", i, a[i]); &#125; return 0;&#125; 2.指针数组1234567891011121314151617181920212223242526#include &lt;stdio.h&gt;// 指针数组类型int main()&#123; // 定义一个指向大小为10个int类型内存的指针数组类型 typedef int(*pMyArrayType)[10]; int a[10]; pMyArrayType p = &amp;a; // 这里为什么要对a取地址，想想？？ easy // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*p)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("p[%d] = %d\t", i, (*p)[i]); printf("a[%d] = %d\n", i, a[i]); &#125; return 0;&#125; 3.数组类型的指针1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &lt;stdio.h&gt;// 数组类型的指针int main()&#123; // 1.我们可以定义一个数组类型，然后用这个类型来定义数组类型的指针 // 定义一个数组类型 int[10] typedef int(MyArrayType)[10]; // 注意，这里MyArrayType就是一个数组类型，这个数组类型大小为10个int类型的内存大小 MyArrayType* p; int a[10]; p = &amp;a; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*p)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("p[%d] = %d\t", i, (*p)[i]); printf("a[%d] = %d\n", i, a[i]); &#125; printf("-----------------------------------------------------------\n"); // 2.直接定义 int(*pArr)[10]; // 注意，这里的pArr是变量的名字，不是类型，不可以用来定义新的变量 int b[10]; pArr = &amp;b; // 赋值 for (int i = 0; i &lt; 10; i++) &#123; (*pArr)[i] = i + 1; &#125; // 打印 for (int i = 0; i &lt; 10; i++) &#123; printf("pArr[%d] = %d\t", i, (*pArr)[i]); printf("b[%d] = %d\n", i, b[i]); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++难点</tag>
+      </tags>
+  </entry>
 </search>
