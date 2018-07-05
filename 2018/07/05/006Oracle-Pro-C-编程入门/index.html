@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="1.概念1.1什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具有完">
+<meta name="description" content="1. 概念1.1 什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具">
 <meta name="keywords" content="Oracle,Pro*C,嵌入式SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle Pro*C 编程入门">
 <meta property="og:url" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/index.html">
 <meta property="og:site_name" content="项斌的BLOG">
-<meta property="og:description" content="1.概念1.1什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具有完">
+<meta property="og:description" content="1. 概念1.1 什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/000.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/001.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/002.png">
 <meta property="og:image" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/003.png">
-<meta property="og:updated_time" content="2018-07-05T14:14:21.839Z">
+<meta property="og:updated_time" content="2018-07-05T14:18:36.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle Pro*C 编程入门">
-<meta name="twitter:description" content="1.概念1.1什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具有完">
+<meta name="twitter:description" content="1. 概念1.1 什么是Pro*c程序 在oracle数据库管理系统中，有三种访问数据库的方法： 1.用 SQL*Plus，直接输入sql命令以命令行交换的方式访问数据库 2.用一些应用开发工具来访问数据库(PL/SQL developer) 3.利用在语言内嵌入sql语言或者调用oracle库函数来访问数据库，例如Pro*c   Pro*C把过程化语言c和非过程化语言sql最完善的结合起来，具">
 <meta name="twitter:image" content="http://yoursite.com/2018/07/05/006Oracle-Pro-C-编程入门/000.png">
 
 
@@ -397,7 +397,7 @@
 
       
         <a id="more"></a>
-<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h1><h2 id="1-1什么是Pro-c程序"><a href="#1-1什么是Pro-c程序" class="headerlink" title="1.1什么是Pro*c程序"></a>1.1什么是<code>Pro*c</code>程序</h2><ul>
+<h1 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h1><h2 id="1-1-什么是Pro-c程序"><a href="#1-1-什么是Pro-c程序" class="headerlink" title="1.1 什么是Pro*c程序"></a>1.1 什么是<code>Pro*c</code>程序</h2><ul>
 <li>在oracle数据库管理系统中，有三种访问数据库的方法：<ul>
 <li>1.用 <code>SQL*Plus</code>，直接输入sql命令以命令行交换的方式访问数据库</li>
 <li>2.用一些应用开发工具来访问数据库(PL/SQL developer)</li>
@@ -435,7 +435,7 @@
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">proc iname=filename [OptionName1=value1]…[OptionNameN=valueN]</span><br><span class="line"><span class="number">1.</span>常用编译选项:</span><br><span class="line">    INAME=path <span class="keyword">and</span> filename (name of the input file) <span class="number">1.</span>pc </span><br><span class="line">    ONAME=path <span class="keyword">and</span> filename (name of the output file) <span class="number">1.</span>c  <span class="number">1.</span>cc</span><br><span class="line">    INCLUDE=path  (头文件所在路径）</span><br><span class="line">    --INCLUDE =路径名 或 INCLUDE =(路径名<span class="number">1</span>,路径名<span class="number">2</span>)</span><br><span class="line">    PARSE=FULL | PARTIA | NONE (<span class="keyword">default</span> FULL <span class="keyword">for</span> C, Others <span class="keyword">for</span> C++)  </span><br><span class="line">    CODE=ANSI_C | CPP (<span class="keyword">default</span> ansi_c) </span><br><span class="line">    USERID=username/password</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>编译<span class="number">1</span>个含有嵌入式SQL的C++ (hello.pc用C++语法写的):</span><br><span class="line">parse=none 		告诉proc编译器 按照c++规范解析 dm02_hello.pc</span><br><span class="line">code=cpp 		告诉proc编译器	按照c++规范 生产文件</span><br><span class="line">proc hello.pc parse=none code=cpp oname=hello.cc</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>编译<span class="number">1</span>个含有嵌入式SQL的C (hello.pc用C语法写的):</span><br><span class="line">proc hello.pc</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="2-Pro-C-语法结构"><a href="#2-Pro-C-语法结构" class="headerlink" title="2.Pro*C 语法结构"></a>2.<code>Pro*C</code> 语法结构</h1><h2 id="2-1-嵌入-SQL-语句在程序中的标志"><a href="#2-1-嵌入-SQL-语句在程序中的标志" class="headerlink" title="2.1 嵌入 SQL 语句在程序中的标志"></a>2.1 嵌入 SQL 语句在程序中的标志</h2><ul>
+<h1 id="2-Pro-C-语法结构"><a href="#2-Pro-C-语法结构" class="headerlink" title="2. Pro*C 语法结构"></a>2. <code>Pro*C</code> 语法结构</h1><h2 id="2-1-嵌入-SQL-语句在程序中的标志"><a href="#2-1-嵌入-SQL-语句在程序中的标志" class="headerlink" title="2.1 嵌入 SQL 语句在程序中的标志"></a>2.1 嵌入 SQL 语句在程序中的标志</h2><ul>
 <li>嵌入式语句以 EXEC SQL 开头， 以分号结束</li>
 </ul>
 <h2 id="2-2-换行"><a href="#2-2-换行" class="headerlink" title="2.2 换行"></a>2.2 换行</h2><ul>
@@ -473,7 +473,7 @@
 </li>
 <li>注意： <code>Pro*C</code> 应用程序中不能使用宿主变量提供数据库对象名称， 所以， 在CREATE, ALTER 和 DROP 等 DDL 语句中不能使用输入宿主变量</li>
 </ul>
-<h2 id="3-小试牛刀：Pro-C-C-开发基础"><a href="#3-小试牛刀：Pro-C-C-开发基础" class="headerlink" title="3.小试牛刀：Pro*C/C++开发基础"></a>3.小试牛刀：<code>Pro*C/C++</code>开发基础</h2><h2 id="3-1-开发流程"><a href="#3-1-开发流程" class="headerlink" title="3.1 开发流程"></a>3.1 开发流程</h2><ul>
+<h1 id="3-小试牛刀：Pro-C-C-开发基础"><a href="#3-小试牛刀：Pro-C-C-开发基础" class="headerlink" title="3. 小试牛刀：Pro*C/C++开发基础"></a>3. 小试牛刀：<code>Pro*C/C++</code>开发基础</h1><h2 id="3-1-开发流程"><a href="#3-1-开发流程" class="headerlink" title="3.1 开发流程"></a>3.1 开发流程</h2><ul>
 <li><p>编写.pc代码(hello.pc)</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="comment">// 1. include the header file</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"sqlca.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"ok...\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -506,7 +506,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-2连接数据库"><a href="#3-2连接数据库" class="headerlink" title="3.2连接数据库"></a>3.2连接数据库</h2><ul>
+<h2 id="3-2-连接数据库"><a href="#3-2-连接数据库" class="headerlink" title="3.2 连接数据库"></a>3.2 连接数据库</h2><ul>
 <li>上述流程全部OK后，我们接着从连接数据库开始</li>
 </ul>
 
@@ -731,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-概念"><span class="nav-number">1.</span> <span class="nav-text">1.概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1什么是Pro-c程序"><span class="nav-number">1.1.</span> <span class="nav-text">1.1什么是Pro*c程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Oracle-预编译器"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Oracle 预编译器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Pro-C-语法结构"><span class="nav-number">2.</span> <span class="nav-text">2.Pro*C 语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-嵌入-SQL-语句在程序中的标志"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 嵌入 SQL 语句在程序中的标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-换行"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-程序结构"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-大小写"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 大小写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-宿主变量"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 宿主变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-小试牛刀：Pro-C-C-开发基础"><span class="nav-number">2.6.</span> <span class="nav-text">3.小试牛刀：Pro*C/C++开发基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-开发流程"><span class="nav-number">2.7.</span> <span class="nav-text">3.1 开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2连接数据库"><span class="nav-number">2.8.</span> <span class="nav-text">3.2连接数据库</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-概念"><span class="nav-number">1.</span> <span class="nav-text">1. 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-什么是Pro-c程序"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 什么是Pro*c程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Oracle-预编译器"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Oracle 预编译器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Pro-C-语法结构"><span class="nav-number">2.</span> <span class="nav-text">2. Pro*C 语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-嵌入-SQL-语句在程序中的标志"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 嵌入 SQL 语句在程序中的标志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-换行"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-程序结构"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 程序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-大小写"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 大小写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-宿主变量"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 宿主变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-小试牛刀：Pro-C-C-开发基础"><span class="nav-number">3.</span> <span class="nav-text">3. 小试牛刀：Pro*C/C++开发基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-开发流程"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-连接数据库"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 连接数据库</span></a></li></ol></li></ol></div>
             
 
           </div>
