@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="嵌入式SQL,Mysql," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="爱学习的小猴子">
-<meta property="og:type" content="website">
-<meta property="og:title" content="项斌的BLOG">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="keywords" content="嵌入式SQL,Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言操作Mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/index.html">
 <meta property="og:site_name" content="项斌的BLOG">
-<meta property="og:description" content="爱学习的小猴子">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-13T10:54:56.473Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/000.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/001.png">
+<meta property="og:updated_time" content="2018-07-07T08:29:32.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="项斌的BLOG">
-<meta name="twitter:description" content="爱学习的小猴子">
+<meta name="twitter:title" content="C语言操作Mysql数据库">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/000.png">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/"/>
 
 
 
 
 
-  <title>分类 | 项斌的BLOG</title>
+  <title>C语言操作Mysql数据库 | 项斌的BLOG</title>
   
 
 
@@ -284,40 +285,252 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/07/007C语言操作Mysql数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiangbin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="项斌的BLOG">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                目前共计 3 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2016校招编程题/">2016校招编程题</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C-C/">C/C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">3</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">C语言操作Mysql数据库</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T15:36:04+08:00">
+                2018-07-07
+              </time>
+            	
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读人数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <img src="/2018/07/07/007C语言操作Mysql数据库/000.png" title="C语言操作Mysql数据库">
+<a id="more"></a>
+<h1 id="1-Linux下安装Mysql数据库"><a href="#1-Linux下安装Mysql数据库" class="headerlink" title="1.Linux下安装Mysql数据库"></a>1.Linux下安装Mysql数据库</h1><ul>
+<li>Linux下安装Mysql数据库可以参考如下的链接：<a href="http://https://www.cnblogs.com/guozhiping/p/7684134.html" target="_blank" rel="noopener">Linux rhel7 下MySQL5.7.18详细安装文档</a></li>
+<li>网页丢失了，参考pdf文档，链接：<a href="https://pan.baidu.com/s/1GhfHThQxJ7iKTPstPtOAXw" target="_blank" rel="noopener">https://pan.baidu.com/s/1GhfHThQxJ7iKTPstPtOAXw</a> 密码：nx6s</li>
+<li>以下的学习主要参考：MySQL 5.1参考手册，手册链接：<a href="https://pan.baidu.com/s/1GxMEjtOdIaBsnSOUndo7aw" target="_blank" rel="noopener">https://pan.baidu.com/s/1GxMEjtOdIaBsnSOUndo7aw</a> 密码：akll<img src="/2018/07/07/007C语言操作Mysql数据库/001.png" title="C语言操作Mysql数据库">
+</li>
+</ul>
+<h1 id="2-基础知识"><a href="#2-基础知识" class="headerlink" title="2.基础知识"></a>2.基础知识</h1><h2 id="2-1-测试环境"><a href="#2-1-测试环境" class="headerlink" title="2.1 测试环境"></a>2.1 测试环境</h2><ul>
+<li><p>写一个.c文件测试编译环境是否正确，测试代码如下：</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 1. init</span></span><br><span class="line">    MYSQL mysql;</span><br><span class="line">    <span class="keyword">if</span>(mysql_init(&amp;mysql) == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = mysql_errno(&amp;mysql);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"func mysql_init error:%d\n"</span>,ret);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.close</span></span><br><span class="line">    mysql_close(&amp;mysql);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello word....\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C APIs包含在mysqlclient库文件当中，与MySQL的源代码一块发行，用于连接到数据库和执行数据库查询</p>
+</li>
+<li>在开发的时候，需要包含头文件mysql.h，和库mysqlclient.so<ul>
+<li>分别使用命令<code>find / -name mysql.h</code>和<code>find / -name libmysqlclient.so</code>查找</li>
+<li>我的查询结果为：<code>/usr/include/mysql/mysql.h</code>和<code>/usr/lib64/mysql/libmysqlclient.so</code></li>
+<li>那么，在编译的时候使用的命令是：<code>gcc -o hello hello.c -I/usr/include/mysql/ -L/usr/lib64/mysql/ -lmysqlclient</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-MYSQL-C-API的常用数据类型"><a href="#2-2-MYSQL-C-API的常用数据类型" class="headerlink" title="2.2 MYSQL C API的常用数据类型"></a>2.2 MYSQL C API的常用数据类型</h2><ul>
+<li>MYSQL<ul>
+<li>该结构代表1个数据库连接的句柄。几乎所有的MYSQL函数均使用它。</li>
+</ul>
+</li>
+<li>MYSQL_RES<ul>
+<li>该结构代表返回行的查询结果</li>
+</ul>
+</li>
+<li>MYSQL_ROW<ul>
+<li>这是1行数据的”类型安全”表示。</li>
+</ul>
+</li>
+<li>MYSQL_FIELD<ul>
+<li>该结构包含关于字段的信息，如字段名、类型和大小等</li>
+</ul>
+</li>
+<li>MYSQL_FIELD_OFFSET<ul>
+<li>这时MYSQL字段列表偏移量的”类型安全”表示</li>
+</ul>
+</li>
+<li>my_ulonglong<ul>
+<li>用于行数以及mysql_affected_rows()、mysql_num_rows()和mysql_insert_id()的类型</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-编程步骤"><a href="#2-3-编程步骤" class="headerlink" title="2.3 编程步骤"></a>2.3 编程步骤</h2><ul>
+<li>1  通过调用mysql_init()初始化连接处理程序</li>
+<li>2  通过调用mysql_real_connect()连接到服务器</li>
+<li>3  发出SQL语句并处理其结果</li>
+<li>4  通过调用mysql_close()，关闭与MYSQL服务器的连接</li>
+</ul>
+<h1 id="3-编程练习"><a href="#3-编程练习" class="headerlink" title="3.编程练习"></a>3.编程练习</h1><h2 id="3-1-初始化、连接、关闭数据库"><a href="#3-1-初始化、连接、关闭数据库" class="headerlink" title="3.1 初始化、连接、关闭数据库"></a>3.1 初始化、连接、关闭数据库</h2><ul>
+<li><p>mysql_init()</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MYSQL *mysql_init(MYSQL *mysql) </span><br><span class="line"></span><br><span class="line">描述</span><br><span class="line">分配或初始化与mysql_real_connect()相适应的MYSQL对象。如果mysql是NULL指针，该函数将分配、初始化、并返回新对象。否则，将初始化对象，并返回对象的地址。如果mysql_init()分配了新的对象，当调用mysql_close()来关闭连接时。将释放该对象。</span><br><span class="line"></span><br><span class="line">返回值</span><br><span class="line">初始化的MYSQL*句柄。如果无足够内存以分配新的对象，返回NULL。</span><br><span class="line"></span><br><span class="line">错误</span><br><span class="line">在内存不足的情况下，返回NULL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql_close()</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void mysql_close(MYSQL *mysql) </span><br><span class="line"></span><br><span class="line">描述</span><br><span class="line">关闭前面打开的连接。如果句柄是由mysql_init()或mysql_connect()自动分配的，mysql_close()还将解除分配由mysql指向的连接句柄。</span><br><span class="line"></span><br><span class="line">返回值</span><br><span class="line">无。</span><br><span class="line"></span><br><span class="line">错误</span><br><span class="line">无。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mysql_real_connect()</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MYSQL *mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd, const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag) </span><br><span class="line"></span><br><span class="line">描述</span><br><span class="line">mysql_real_connect()尝试与运行在主机上的MySQL数据库引擎建立连接。在你能够执行需要有效MySQL连接句柄结构的任何其他API函数之前，mysql_real_connect()必须成功完成。</span><br><span class="line"></span><br><span class="line">参数的指定方式如下：</span><br><span class="line">·         第1个参数应是已有MYSQL结构的地址。调用mysql_real_connect()之前，必须调用mysql_init()来初始化MYSQL结构。通过mysql_options()调用，可更改多种连接选项。</span><br><span class="line">·         “host”的值必须是主机名或IP地址。如果“host”是NULL或字符串&quot;localhost&quot;，连接将被视为与本地主机的连接。如果操作系统支持套接字（Unix）或命名管道（Windows），将使用它们而不是TCP/IP连接到服务器。</span><br><span class="line">·         “user”参数包含用户的MySQL登录ID。如果“user”是NULL或空字符串&quot;&quot;，用户将被视为当前用户。在UNIX环境下，它是当前的登录名。在Windows ODBC下，必须明确指定当前用户名</span><br><span class="line">·         “passwd”参数包含用户的密码。如果“passwd”是NULL，仅会对该用户的（拥有1个空密码字段的）用户表中的条目进行匹配检查。这样，数据库管理员就能按特定的方式设置MySQL权限系统，根据用户是否拥有指定的密码，用户将获得不同的权限。</span><br><span class="line">·         “db”是数据库名称。如果db为NULL，连接会将默认的数据库设为该值。</span><br><span class="line">·         如果“port”不是0，其值将用作TCP/IP连接的端口号。注意，“host”参数决定了连接的类型。</span><br><span class="line">·         如果unix_socket不是NULL，该字符串描述了应使用的套接字或命名管道。注意，“host”参数决定了连接的类型。</span><br><span class="line">·         client_flag的值通常为0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误处理：mysql_error OR mysql_errno</p>
+</li>
+<li><p>一个小例子</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mysql.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 1. init</span></span><br><span class="line">    MYSQL mysql;</span><br><span class="line">    <span class="keyword">if</span>(mysql_init(&amp;mysql) == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = mysql_errno(&amp;mysql);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"func mysql_init error:%d\n"</span>,ret);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. connect</span></span><br><span class="line">    <span class="keyword">if</span>(mysql_real_connect(&amp;mysql,<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"123"</span>,<span class="string">"mydb61"</span>,<span class="number">0</span>,<span class="literal">NULL</span>,<span class="number">0</span>) == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ret = mysql_errno(&amp;mysql);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"func mysql_real_connect error:%d\n"</span>,ret);</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. close</span></span><br><span class="line">    mysql_close(&amp;mysql);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello word....\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补充：也可另一种方式来进行连接。先用MYSQL_READ_DEFAULT_FILE作为选项名来调用mysql_options(), 再调用mysql_real_connect()来连接服务器</p>
+<ul>
+<li>mysql_options(*mysql, MYSQL_READ_DEFAULT_FILE, “my.cnf”)</li>
+<li>mysql_real_connect(*mysql, NULL, NULL, NULL, NULL, 0, NULL, 0)</li>
+<li>说明：my.cnf文件中记录了连接MySQL服务器所需的各项参数（地址，端口，用户名，密码，数据库，字符集，Unix Socket等）。这样可以灵活的修改连接参数而不必重新编译程序</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-insert、update、select、delete"><a href="#3-2-insert、update、select、delete" class="headerlink" title="3.2 insert、update、select、delete"></a>3.2 insert、update、select、delete</h2><ul>
+<li>执行查询</li>
+<li>调用mysql_query()来执行SQL语句，如果语句中包含二进制数据，则需要调用<br>mysql_real_query()</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+		
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/嵌入式SQL/" rel="tag"><i class="fa fa-tag"></i> 嵌入式SQL</a>
+          
+            <a href="/tags/Mysql/" rel="tag"><i class="fa fa-tag"></i> Mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/05/006Oracle-Pro-C-编程入门/" rel="next" title="Oracle Pro*C 编程入门">
+                <i class="fa fa-chevron-left"></i> Oracle Pro*C 编程入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -350,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -459,6 +681,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Linux下安装Mysql数据库"><span class="nav-number">1.</span> <span class="nav-text">1.Linux下安装Mysql数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-基础知识"><span class="nav-number">2.</span> <span class="nav-text">2.基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-测试环境"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 测试环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-MYSQL-C-API的常用数据类型"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 MYSQL C API的常用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-编程步骤"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 编程步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-编程练习"><span class="nav-number">3.</span> <span class="nav-text">3.编程练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-初始化、连接、关闭数据库"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 初始化、连接、关闭数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-insert、update、select、delete"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 insert、update、select、delete</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
