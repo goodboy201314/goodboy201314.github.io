@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[PBC library在Linux系统中的安装]]></title>
     <url>%2F2018%2F07%2F11%2F008PBC-library%E5%9C%A8Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AE%89%E8%A3%85%2F</url>
-    <content type="text"><![CDATA[Pairing-based cryptography library是在gmp库基础上开发的开源的C函数库，提供了对椭圆曲线群上的配对运算支持。本文主要针对PBC 官网的manual手册，学习使用PBC library。本文的实践环境为redhat 1. 安装Pbc library依赖的库 m4、flex、bison 在Linux系统中键入如下命令即可安装相应的包123yum install m4yum install flexyum install bison 2. 安装GMP库 GMP库下载地址如下：https://gmplib.org/ 下载并解压，在terminal里进入解压后的文件夹进行安装，方法如下1234./configuremakemake checkmake install(需要新建文件夹的权利sudo) 3. Pbc library库安装 pbc下载地址如下：http://crypto.stanford.edu/pbc/download.html 下载并解压，在terminal里进入解压文件夹安装，方法如下 123./configuremakemake install 至此pbc library 在redhat系统中的安装完成。接下来就是验证pbc库是否安装正确。 4.编写简单的程序验证 首先找到头文件pbc.h的位置 1234在终端输入：find / -name pbc.h搜寻结果：/usr/local/include/pbc/pbc.h 接着找到库文件libgmp，libpbc 123456查找libgmp库：find / -name libgmp.*/usr/local/lib/libgmp.so 查找libpbc库：find / -name libpbc.*/usr/local/lib/libpbc.so 有了上述结果，我们就可以写一个简单的makefile了 1234start: gcc -o hello hello.c -L/usr/local/lib/ -lgmp -lpbc clean: rm -rf hello 测试代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include "/usr/local/include/pbc/pbc.h" //必须包含头文件pbc.h#include "/usr/local/include/pbc/pbc_test.h"int main(int argc, char const *argv[]) &#123; pairing_t pairing; /* pairing_t定义： pairings where elements belong本例子用a.param去初始化pairing; a pairing is a map 例如:e:G1×G2-&gt;Gt a.param是pbc库中标准的参数集，其提供对称的pairing ，在所有的param中有最高的速度(根据看过的一篇论文中说明的没做实验～～) */ char s[16384]; FILE *fp = stdin; fp = fopen("a.param", "r"); if (!fp) pbc_die("error opening %s", argv[1]); size_t count = fread(s, 1, 16384, fp); if (!count) pbc_die("input error"); fclose(fp); if (pairing_init_set_buf(pairing, s, count)) pbc_die("pairing init failed"); //pairing 初始化结束 //定义变量-初始化-用于保存系统参数、公私秘钥以及其他变量 element_t g, h; element_t public_key, secret_key; element_t sig; element_t temp1, temp2; element_init_G2(g, pairing);//用pairing 初始化g element_init_G2(public_key, pairing); element_init_G1(h, pairing); element_init_G1(sig, pairing); element_init_GT(temp1, pairing); element_init_GT(temp2, pairing); element_init_Zr(secret_key, pairing); element_random(g);//随机生成g element_random(secret_key);//随机生成secret_key element_pow_zn(public_key, g, secret_key);//public_key = g^secret_key //当要对一个消息进行签名时，首先需要对其进行hash，使用一些标准的哈希算法，哈希过程没有涉及到pairing 所以 很遗憾pbc库中没有提供 element_from_hash(h, "ABCDEF", 6);//假设hash消息后得ABCDEF（48bit的哈希），这个函数的作用时map these bytes to an element h of G1 element_pow_zn(sig, h, secret_key);//sig = h^secret_key pairing_apply(temp1, sig, g, pairing);//temp1 = e(sig,g) pairing_apply(temp2, h, public_key, pairing); // e(h,public_key) if (!element_cmp(temp1, temp2)) &#123; //e(sig,g)=e(h^secret_key,g)//e(h,public_key)=e(h,g^secret_key)只要sig正确那么就有temp1=temp2 printf("signature verifies\n"); &#125; else &#123; printf("signature does not verify\n"); &#125; return 0;&#125; 5. 关于报错： 运行的时候报错 ./hello 12./hello: error while loading shared libraries: libpbc.so .1: cannot open shared object file: No such file or directory 上次在安装oracle后运行程序也报告类似的错误，最后是添加一个环境变量解决的，所以这次估计也是这个梗。 尝试解决：添加库路径 123456789[root@localhost test_gmb]# cd /etc[root@localhost etc]# ls -a | grep ld.so.confld.so .confld.so .conf.d[root@localhost etc]# cat ld.so.confinclude ld.so.conf.d/*.conf[root@localhost etc]# vi ld.so.conf====》 添加pbc和gmp库的路径在最后一行，即 /usr/local/lib[root@localhost etc]# ldconfig 关于这个错误，更加详细的内容请参考：http://man.linuxde.net/ldconfig]]></content>
+    <content type="text"><![CDATA[Pairing-based cryptography library是在gmp库基础上开发的开源的C函数库，提供了对椭圆曲线群上的配对运算支持。本文主要针对PBC 官网的manual手册，学习使用PBC library。本文的实践环境为redhat 1. 安装Pbc library依赖的库 m4、flex、bison 在Linux系统中键入如下命令即可安装相应的包123yum install m4yum install flexyum install bison 2. 安装GMP库 GMP库下载地址如下：https://gmplib.org/ 下载并解压，在terminal里进入解压后的文件夹进行安装，方法如下1234./configuremakemake checkmake install(需要新建文件夹的权利sudo) 3. Pbc library库安装 pbc下载地址如下：http://crypto.stanford.edu/pbc/download.html 下载并解压，在terminal里进入解压文件夹安装，方法如下 123./configuremakemake install 至此pbc library 在redhat系统中的安装完成。接下来就是验证pbc库是否安装正确。 4. 编写简单的程序验证 首先找到头文件pbc.h的位置 1234在终端输入：find / -name pbc.h搜寻结果：/usr/local/include/pbc/pbc.h 接着找到库文件libgmp，libpbc 123456查找libgmp库：find / -name libgmp.*/usr/local/lib/libgmp.so 查找libpbc库：find / -name libpbc.*/usr/local/lib/libpbc.so 有了上述结果，我们就可以写一个简单的makefile了 1234start: gcc -o hello hello.c -L/usr/local/lib/ -lgmp -lpbc clean: rm -rf hello 测试代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;#include "/usr/local/include/pbc/pbc.h" //必须包含头文件pbc.h#include "/usr/local/include/pbc/pbc_test.h"int main(int argc, char const *argv[]) &#123; pairing_t pairing; /* pairing_t定义： pairings where elements belong本例子用a.param去初始化pairing; a pairing is a map 例如:e:G1×G2-&gt;Gt a.param是pbc库中标准的参数集，其提供对称的pairing ，在所有的param中有最高的速度(根据看过的一篇论文中说明的没做实验～～) */ char s[16384]; FILE *fp = stdin; fp = fopen("a.param", "r"); if (!fp) pbc_die("error opening %s", argv[1]); size_t count = fread(s, 1, 16384, fp); if (!count) pbc_die("input error"); fclose(fp); if (pairing_init_set_buf(pairing, s, count)) pbc_die("pairing init failed"); //pairing 初始化结束 //定义变量-初始化-用于保存系统参数、公私秘钥以及其他变量 element_t g, h; element_t public_key, secret_key; element_t sig; element_t temp1, temp2; element_init_G2(g, pairing);//用pairing 初始化g element_init_G2(public_key, pairing); element_init_G1(h, pairing); element_init_G1(sig, pairing); element_init_GT(temp1, pairing); element_init_GT(temp2, pairing); element_init_Zr(secret_key, pairing); element_random(g);//随机生成g element_random(secret_key);//随机生成secret_key element_pow_zn(public_key, g, secret_key);//public_key = g^secret_key //当要对一个消息进行签名时，首先需要对其进行hash，使用一些标准的哈希算法，哈希过程没有涉及到pairing 所以 很遗憾pbc库中没有提供 element_from_hash(h, "ABCDEF", 6);//假设hash消息后得ABCDEF（48bit的哈希），这个函数的作用时map these bytes to an element h of G1 element_pow_zn(sig, h, secret_key);//sig = h^secret_key pairing_apply(temp1, sig, g, pairing);//temp1 = e(sig,g) pairing_apply(temp2, h, public_key, pairing); // e(h,public_key) if (!element_cmp(temp1, temp2)) &#123; //e(sig,g)=e(h^secret_key,g)//e(h,public_key)=e(h,g^secret_key)只要sig正确那么就有temp1=temp2 printf("signature verifies\n"); &#125; else &#123; printf("signature does not verify\n"); &#125; return 0;&#125; 5. 关于报错 运行的时候报错 ./hello 12./hello: error while loading shared libraries: libpbc.so .1: cannot open shared object file: No such file or directory 上次在安装oracle后运行程序也报告类似的错误，最后是添加一个环境变量解决的，所以这次应该也是这个梗。 尝试解决：添加库路径 123456789[root@localhost test_gmb]# cd /etc[root@localhost etc]# ls -a | grep ld.so.confld.so .confld.so .conf.d[root@localhost etc]# cat ld.so.confinclude ld.so.conf.d/*.conf[root@localhost etc]# vi ld.so.conf====》 添加pbc和gmp库的路径在最后一行，即 /usr/local/lib[root@localhost etc]# ldconfig 关于这个错误，更加详细的内容请参考：http://man.linuxde.net/ldconfig]]></content>
       <categories>
         <category>PBC</category>
       </categories>
@@ -20,8 +20,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>Mysql</tag>
         <tag>嵌入式SQL</tag>
+        <tag>Mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -33,8 +33,8 @@
       </categories>
       <tags>
         <tag>Oracle</tag>
-        <tag>嵌入式SQL</tag>
         <tag>Pro*C</tag>
+        <tag>嵌入式SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -45,8 +45,8 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>数据库</tag>
         <tag>Oracle</tag>
+        <tag>数据库</tag>
       </tags>
   </entry>
   <entry>
