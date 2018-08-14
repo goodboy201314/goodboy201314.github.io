@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Epoll,线程池,安全," />
+  <meta name="keywords" content="线程池,Epoll,安全," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="本人研究生阶段主要研究的是通信安全（身份认证和密钥协商协议）。临近毕业，将自己毕业论文中的基于移动存储的身份认证和密钥协议用于医疗环境下，因为跨3个平台（iOS,Windows,Linux），所以用了半个月的时间。今天终于完成了，心里有点小激动。现总结回顾如下： 1.背景先说下我要实现的功能，我们都知道，在有些环境中（医疗、金融…）需要加密传输的信息来保证用户的隐私不被网络上恶意的攻击者所获取">
-<meta name="keywords" content="Epoll,线程池,安全">
+<meta name="keywords" content="线程池,Epoll,安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="研究生毕业设计系统实现：Epoll+线程池+安全通信">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/index.html">
 <meta property="og:site_name" content="项斌的BLOG">
-<meta property="og:description" content="本人研究生阶段主要研究的是通信安全（身份认证和密钥协商协议）。临近毕业，将自己毕业论文中的基于移动存储的身份认证和密钥协议用于医疗环境下，因为跨3个平台（iOS,Windows,Linux），所以用了半个月的时间。今天终于完成了，心里有点小激动。现总结回顾如下： 1.背景先说下我要实现的功能，我们都知道，在有些环境中（医疗、金融…）需要加密传输的信息来保证用户的隐私不被网络上恶意的攻击者所获取">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/000.png">
 <meta property="og:image" content="http://yoursite.com/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/001.png">
-<meta property="og:updated_time" content="2018-08-14T10:07:03.536Z">
+<meta property="og:updated_time" content="2018-08-14T10:13:13.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="研究生毕业设计系统实现：Epoll+线程池+安全通信">
-<meta name="twitter:description" content="本人研究生阶段主要研究的是通信安全（身份认证和密钥协商协议）。临近毕业，将自己毕业论文中的基于移动存储的身份认证和密钥协议用于医疗环境下，因为跨3个平台（iOS,Windows,Linux），所以用了半个月的时间。今天终于完成了，心里有点小激动。现总结回顾如下： 1.背景先说下我要实现的功能，我们都知道，在有些环境中（医疗、金融…）需要加密传输的信息来保证用户的隐私不被网络上恶意的攻击者所获取">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/001.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/000.png">
 
 
 
@@ -393,7 +391,7 @@
       
 
       
-        
+        <img src="/2018/08/14/010研究生毕业设计系统实现：Epoll-线程池-安全通信/000.png" title="研究生毕业设计系统实现：Epoll+线程池+安全通信">
 <a id="more"></a>
 <p>本人研究生阶段主要研究的是通信安全（身份认证和密钥协商协议）。临近毕业，将自己毕业论文中的基于移动存储的身份认证和密钥协议用于医疗环境下，因为跨3个平台（iOS,Windows,Linux），所以用了半个月的时间。今天终于完成了，心里有点小激动。现总结回顾如下：</p>
 <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1.背景"></a>1.背景</h1><p>先说下我要实现的功能，我们都知道，在有些环境中（医疗、金融…）需要加密传输的信息来保证用户的隐私不被网络上恶意的攻击者所获取。既然要加密，那么就需要两端可以通过加密解密实现信息的传递，这当然可以通过对称加密或者非对称加密的方式实现。但是，在网络环境下，仍然存在一个问题，那就是你如何确保对方就是他所声称的那个人呢？（对方发信息给你，说他叫张三，你如何知道他不是李四伪装的）这就是身份认证机制了（本人研究生研究范围，如有兴趣，可以百度相关关键字）….</p>
@@ -436,7 +434,15 @@
 <li><p>windows注册服务器代码涉及到：mysql数据库的操作、二维码相关操作、以及gmp相关操作，只有一个主窗体界面代码，比较简单</p>
 </li>
 </ul>
-<h1 id="5-碰到的一些问题和解决办法"><a href="#5-碰到的一些问题和解决办法" class="headerlink" title="5.碰到的一些问题和解决办法"></a>5.碰到的一些问题和解决办法</h1><ul>
+<h1 id="5-可能的改进部分"><a href="#5-可能的改进部分" class="headerlink" title="5.可能的改进部分"></a>5.可能的改进部分</h1><ul>
+<li>Linux服务器端<ul>
+<li>可以添加一个内存池，用于TCP/IP建立以及密钥的协商过程中，避免栈上内存的耗尽和malloc时间的浪费</li>
+<li>可以添加一个数据库连接池，避免每次使用数据都连接，使用完后又立即释放</li>
+<li>Epoll模型可以尝试反应堆模型，提高程序的并发量</li>
+</ul>
+</li>
+</ul>
+<h1 id="6-碰到的一些问题和解决办法"><a href="#6-碰到的一些问题和解决办法" class="headerlink" title="6.碰到的一些问题和解决办法"></a>6.碰到的一些问题和解决办法</h1><ul>
 <li><p>iOS遇到的问题</p>
 <ul>
 <li>因为tmis服务器连接的是电脑发射出来的WIFI，所以开发的iOS客户端的时候同样连接到了WIFI。iOS上的socket编程使用的函数和linux下一样，所以10分钟左右就写好了测试代码。但是，测试连接的时候，发现connect函数总是返回错误，通过errno查看到错误号为65（无法访问网络），第一次遇到，只好谷歌、百度、stackover…..</li>
@@ -456,7 +462,7 @@
 <li><p>不可重入函数strtok</p>
 </li>
 </ul>
-<h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h1><ul>
+<h1 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h1><ul>
 <li>真真实实体验了一把跨平台开发，痛并快乐着</li>
 <li>办法总比问题多</li>
 <li>@V@</li>
@@ -478,9 +484,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Epoll/" rel="tag"><i class="fa fa-tag"></i> Epoll</a>
-          
             <a href="/tags/线程池/" rel="tag"><i class="fa fa-tag"></i> 线程池</a>
+          
+            <a href="/tags/Epoll/" rel="tag"><i class="fa fa-tag"></i> Epoll</a>
           
             <a href="/tags/安全/" rel="tag"><i class="fa fa-tag"></i> 安全</a>
           
@@ -683,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-背景"><span class="nav-number">1.</span> <span class="nav-text">1.背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-系统设计"><span class="nav-number">2.</span> <span class="nav-text">2.系统设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-源码下载"><span class="nav-number">3.</span> <span class="nav-text">3.源码下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-代码解释"><span class="nav-number">4.</span> <span class="nav-text">4.代码解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-碰到的一些问题和解决办法"><span class="nav-number">5.</span> <span class="nav-text">5.碰到的一些问题和解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-总结"><span class="nav-number">6.</span> <span class="nav-text">6.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-背景"><span class="nav-number">1.</span> <span class="nav-text">1.背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-系统设计"><span class="nav-number">2.</span> <span class="nav-text">2.系统设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-源码下载"><span class="nav-number">3.</span> <span class="nav-text">3.源码下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-代码解释"><span class="nav-number">4.</span> <span class="nav-text">4.代码解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-可能的改进部分"><span class="nav-number">5.</span> <span class="nav-text">5.可能的改进部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-碰到的一些问题和解决办法"><span class="nav-number">6.</span> <span class="nav-text">6.碰到的一些问题和解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-总结"><span class="nav-number">7.</span> <span class="nav-text">7.总结</span></a></li></ol></div>
             
 
           </div>
